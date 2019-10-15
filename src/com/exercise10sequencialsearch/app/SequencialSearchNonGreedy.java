@@ -31,6 +31,7 @@ public class SequencialSearchNonGreedy {
 			}
 		}while(numberToFind < 0);
 		
+		
 		for(int i=0; i<ELEMENTS_ARRAY; i++) {
 			if(numberToFind == vector[i]) {
 				System.out.println(numberToFind + " was found at " + "position #" + i);
