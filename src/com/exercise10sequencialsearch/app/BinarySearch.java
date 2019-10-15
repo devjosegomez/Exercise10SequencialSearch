@@ -30,9 +30,10 @@ public class BinarySearch {
 		
 		//show array elements
 		for(int i=0; i<ELEMENTS_ARRAY; i++) {
-			System.out.println(myArray[i] + " ");
+			System.out.print(myArray[i] + " ");
 		}
 		
+		System.out.println();
 		//Constraint that the user must enter a positive number
 		do {
 			System.out.println("Enter the number to find in the array (0-100):");
@@ -44,11 +45,12 @@ public class BinarySearch {
 		}while(numberToFind<0);
 		
 		//sorting algorithm
+		System.out.println("Sorting array...");
 		for(int i=0;i<ELEMENTS_ARRAY;i++)
 		{
 			for(int j=0;j<ELEMENTS_ARRAY-1;j++)
 			{
-				if(myArray[j]<myArray[j+1])
+				if(myArray[j]>myArray[j+1])
 				{
 					temp=myArray[j+1];
 					myArray[j+1]=myArray[j];
@@ -57,33 +59,42 @@ public class BinarySearch {
 			}
 		}
 		
+
 		//display ordered array
-		System.out.println(" ");
-		//Display the disordered vector
 		for(int i=0;i<ELEMENTS_ARRAY;i++)
 		{
 			System.out.print(myArray[i]+" ");
 		}
-		//Binary search algorithm
 		
-		while(limInf<=limSup) {
-			pivotal = (limSup - limInf) / 2;
-			if(numberToFind==myArray[pivotal]) {
-				indexFound = pivotal;
-				break;
-			}else if(numberToFind>myArray[pivotal]) {
-				limInf = pivotal +1;
-			}else if(numberToFind<myArray[pivotal]) {
-				limInf = pivotal -1;
-			}
+		//Binary Search algorithm
+		 while(limInf<=limSup)
+		 {
+			 pivotal = limInf + (limSup-limInf)/2;
+			 if(numberToFind==myArray[pivotal])
+			 {
+				 indexFound=pivotal;
+				 break;
+			 }
+			 else if(numberToFind>myArray[pivotal])
+			 {
+				 limInf=pivotal+1;
+			 }
+			 else if(numberToFind<myArray[pivotal])
+			 {
+				 limSup=pivotal-1;
+			 }
+		 
+		 }
+		 
+		System.out.println();
+		 
+		if(indexFound!=-1)
+		{
+			System.out.println("Element found at index: " + indexFound);
 		}
-		
-		System.out.println(indexFound);
-		
-		if(indexFound!=-1) {
-			System.out.println("Element found ar index: " + indexFound);
-		}else {
-			System.out.println("Element not present in the array! :(");
+		else
+		{
+			System.out.println("Element not present in the array!");
 		}
 		
 		input.close();
